@@ -1,9 +1,14 @@
 package com.example.kimovements;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 
+import com.example.kimovements.model.button.Button;
+import com.example.kimovements.model.joystick.Joystick;
+import com.example.kimovements.model.joystick.JoystickBuilder;
+import com.example.kimovements.model.joystick.JoystickType;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -15,6 +20,8 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -45,6 +52,25 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        test();
+    }
+
+    private void test() {
+        Joystick snes = JoystickBuilder.create(JoystickType.SNES);
+        Joystick arcade = JoystickBuilder.create(JoystickType.ARCADE);
+
+        List<Button> snesButtons = snes.getButtons();
+
+        for(Button button : snesButtons){
+            Log.i("SNES Button", button.getDescription());
+        }
+
+        List<Button> arcadeButtons = snes.getButtons();
+
+        for(Button button : arcadeButtons){
+            Log.i("Arcade Button", button.getDescription());
+        }
     }
 
     @Override
