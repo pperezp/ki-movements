@@ -5,6 +5,9 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 
+import com.example.kimovements.model.Character;
+import com.example.kimovements.model.CharacterBuilder;
+import com.example.kimovements.model.Move;
 import com.example.kimovements.model.button.Button;
 import com.example.kimovements.model.joystick.Joystick;
 import com.example.kimovements.model.joystick.JoystickBuilder;
@@ -22,6 +25,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import java.util.List;
+
+// http://www.angelfire.com/va3/mk/ki/main.htm#Sabrewulf
 
 public class MainActivity extends AppCompatActivity {
 
@@ -61,6 +66,14 @@ public class MainActivity extends AppCompatActivity {
             Log.i("Type", joystick.getDescription());
             for(Button button : joystick.getButtons()){
                 Log.i("Button", button.getDescription());
+            }
+        }
+
+        List<Character> characters = CharacterBuilder.getCharacters();
+
+        for(Character character : characters){
+            for(Move move : character.getMoves()){
+                Log.i("move", move.toString());
             }
         }
     }

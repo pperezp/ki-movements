@@ -2,6 +2,7 @@ package com.example.kimovements.model.joystick;
 
 import com.example.kimovements.model.HitType;
 import com.example.kimovements.model.Intensity;
+import com.example.kimovements.model.button.Button;
 import com.example.kimovements.model.button.arcade.ArcadeButton;
 import com.example.kimovements.model.button.snes.SNESButton;
 import com.example.kimovements.model.button.snes.SNESButtonLetter;
@@ -20,6 +21,28 @@ public class JoystickBuilder {
         joysticks.add(arcadeJoystick);
 
         return joysticks;
+    }
+
+    public static List<Button> getButtons(HitType hitType) {
+        List<Button> buttons = new ArrayList<>();
+
+        buttons.add(getButton(Intensity.QUICK, hitType));
+        buttons.add(getButton(Intensity.MEDIUM, hitType));
+        buttons.add(getButton(Intensity.FIERCE, hitType));
+
+        return buttons;
+    }
+
+    public static Button getButton(Intensity intensity, HitType hitType){
+        Joystick snesJoystick = create(JoystickType.SNES);
+
+        for(Button button : snesJoystick.getButtons()){
+            if(button.is(intensity, hitType)){
+                return button;
+            }
+        }
+
+        return null;
     }
 
     private static Joystick create(JoystickType joystickType){
