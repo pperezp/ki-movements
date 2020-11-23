@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
             Log.i("SNES Button", button.getDescription());
         }
 
-        List<Button> arcadeButtons = snes.getButtons();
+        List<Button> arcadeButtons = arcade.getButtons();
 
         for(Button button : arcadeButtons){
             Log.i("Arcade Button", button.getDescription());

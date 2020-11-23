@@ -3,9 +3,6 @@ package com.example.kimovements.model.button;
 import com.example.kimovements.model.HitType;
 import com.example.kimovements.model.Intensity;
 
-import lombok.Getter;
-import lombok.Setter;
-
 public abstract class Button {
     protected Intensity intensity;
     protected HitType hitType;
