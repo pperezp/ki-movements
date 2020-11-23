@@ -20,4 +20,6 @@ public abstract class Joystick {
     public List<Button> getButtons() {
         return buttons;
     }
+
+    public abstract String getDescription();
 }

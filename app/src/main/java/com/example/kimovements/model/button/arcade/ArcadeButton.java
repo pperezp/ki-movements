@@ -11,6 +11,6 @@ public class ArcadeButton extends Button {
 
     @Override
     public String getDescription() {
-        return intensity.name() + " " + hitType.name();
+        return intensity.getShortDescription() + hitType.getShortDescription();
     }
 }

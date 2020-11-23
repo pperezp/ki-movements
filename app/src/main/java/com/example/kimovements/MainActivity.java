@@ -57,19 +57,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void test() {
-        Joystick snes = JoystickBuilder.create(JoystickType.SNES);
-        Joystick arcade = JoystickBuilder.create(JoystickType.ARCADE);
-
-        List<Button> snesButtons = snes.getButtons();
-
-        for(Button button : snesButtons){
-            Log.i("SNES Button", button.getDescription());
-        }
-
-        List<Button> arcadeButtons = arcade.getButtons();
-
-        for(Button button : arcadeButtons){
-            Log.i("Arcade Button", button.getDescription());
+        for(Joystick joystick : JoystickBuilder.getJoysticks()){
+            Log.i("Type", joystick.getDescription());
+            for(Button button : joystick.getButtons()){
+                Log.i("Button", button.getDescription());
+            }
         }
     }
 

@@ -6,8 +6,23 @@ import com.example.kimovements.model.button.arcade.ArcadeButton;
 import com.example.kimovements.model.button.snes.SNESButton;
 import com.example.kimovements.model.button.snes.SNESButtonLetter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class JoystickBuilder {
-    public static Joystick create(JoystickType joystickType){
+    public static List<Joystick> getJoysticks(){
+        List<Joystick> joysticks = new ArrayList<>();
+
+        Joystick snesJoystick = create(JoystickType.SNES);
+        Joystick arcadeJoystick = create(JoystickType.ARCADE);
+
+        joysticks.add(snesJoystick);
+        joysticks.add(arcadeJoystick);
+
+        return joysticks;
+    }
+
+    private static Joystick create(JoystickType joystickType){
         Joystick joystick;
 
         switch (joystickType){
